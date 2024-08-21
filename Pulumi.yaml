@@ -1,0 +1,7 @@
+name: PulumiGithub
+runtime: dotnet
+description: For create git repo using pulumi
+config:    
+  pulumi:tags:
+    value:
+      pulumi:template: csharp  

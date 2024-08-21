@@ -1,0 +1,40 @@
+trigger:
+- main
+
+pool:
+  name: 'Default'
+
+steps:
+# - powershell: |
+#     # Download the latest Pulumi release for Windows
+#     $pulumiVersion = 'v3.88.0'  # Specify the Pulumi version here
+#     $pulumiZip = "pulumi-$pulumiVersion-windows-x64.zip"
+#     $downloadUrl = "https://get.pulumi.com/releases/sdk/$pulumiZip"
+    
+#     Invoke-WebRequest -Uri $downloadUrl -OutFile $pulumiZip
+    
+#     # Create a directory for Pulumi
+#     $pulumiDir = "C:\Pulumi"
+#     if (!(Test-Path $pulumiDir)) {
+#         New-Item -ItemType Directory -Path $pulumiDir
+#     }
+
+#     # Extract Pulumi into the directory
+#     Expand-Archive $pulumiZip -DestinationPath $pulumiDir -Force
+
+#     # Add Pulumi to the PATH
+#     $env:Path += ";$pulumiDir\pulumi-$pulumiVersion"
+#   displayName: 'Download and Install Pulumi'
+
+- powershell: |
+    pulumi login
+  displayName: 'Login to Pulumi'
+
+- powershell: | 
+    pulumi stack select dev
+    pulumi config set githubToken $(githubToken) --secret
+    pulumi up --yes
+  displayName: 'Run Pulumi'
+  env:
+    PULUMI_ACCESS_TOKEN: $(PULUMI_ACCESS_TOKEN)
+    PULUMI_CONFIG_PASSPHRASE: $(PULUMI_CONFIG_PASSPHRASE)

@@ -1,0 +1,29 @@
+config:
+  PulumiGithub:githubToken:
+    secure: AAABADhFwlYaPgpMLRQKW6qqTsRI9r7ilgQsC+mIqxWsJvXE3TYv2r6JrHq14OyM5j0D36psVAUDS6TU8IFsSt74yoHbafhB
+  PulumiGithub:repoDescription: This is dev repo
+  PulumiGithub:repoName: Harrods.Digital
+  PulumiGithub:repos:
+    api:
+      currentName: template
+      isCreate: true
+      newName: Sample
+      suffix: API
+      templateName: Harrods.Digital.Template.API
+      templateOwnername: ShahryarShakeel
+    infra:
+      currentName: template
+      isCreate: true
+      newName: Sample
+      suffix: Infra
+      templateName: Harrods.Digital.Template.Infra
+      templateOwnername: ShahryarShakeel
+    ui:
+      currentName: template
+      isCreate: true
+      newName: Sample
+      suffix: UI
+      templateName: Harrods.Digital.Template.UI
+      templateOwnername: ShahryarShakeel
+  PulumiGithub:visibility: public
+  PulumiGithub:yourUsername: ShahryarShakeel
